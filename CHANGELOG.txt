@@ -7,6 +7,7 @@
 * Added `message` to `JsonSchemaValuesException` joining messages of all collected errors
 * Fixed the `date-time` format accepting months, days and hours out of range (such as `2020-19-39T29:00:00Z`) and rejecting a leap second (`23:59:60Z`)
 * Fixed the `time` format accepting hours, minutes, seconds and offsets out of range (such as `29:99:99`)
+* Improved validation performance (about 1.5x on object-heavy schemas) by generating leaner code: no set operations for `required`, no `_keys` bookkeeping when nothing consumes it, tuple membership for all-string `enum`s. No behavior change.
 
 === 2.22.2 (2026-08-15)
 
